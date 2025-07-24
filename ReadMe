@@ -56,8 +56,8 @@ List and explain each API with purpose.
 |----------------------|--------------------------------------|------------------------------------------|
 | 1. Authentication    | `/v2/authentication`                 | Generates bearer token                    |
 | 2. Runner As ID      | `/v2/devices/list`                   | Retrieves available bot runner ID        |
-| 3. Master File ID    | `/v2/repository/file/list`               | Gets bot’s master file ID from Control Room |
-| 4. Create Schedule   | `/v2/scheduler/schedules`            | Creates bot schedule for given date       |
+| 3. Master File ID    | `/v2/repository/file/list`           | Gets bot’s master file ID from Control Room |
+| 4. Create Schedule   | `/v2/schedule/automations`           | Creates bot schedule for given date       |
 ```
 
 ---
