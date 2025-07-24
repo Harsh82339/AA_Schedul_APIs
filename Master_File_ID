@@ -1,0 +1,60 @@
+
+---
+
+### ✅ API 3: Get Master File ID – List Bot Files
+
+| **Purpose**  | Retrieves bot file IDs (Master File ID) from the Control Room repository. |
+| ------------ | ------------------------------------------------------------------------- |
+| **Method**   | `POST`                                                                    |
+| **Endpoint** | `<HOST>/v2/repository/file/list`                                          |
+| **Headers**  |                                                                           |
+
+* `Content-Type: application/json`
+* `X-Authorization: <your_token>`
+
+---
+
+### 📥 Sample Request Body (Exact Match by Bot Name)
+
+Use this if you want to find a specific bot file by name:
+
+```json
+{
+  "filter": {
+        "operation": "eq",
+        "field": "name",
+        "value": "$Bot_MasterFileName$"
+  }
+}
+```
+
+### ✅ Sample Response (Simplified)
+
+```json
+{
+  "list": [
+    {
+      "id": "e7f85c5a-xxxx-xxxx-xxxx-78e56a874aec",
+      "name": "invoice-automation",
+      "path": "Public/Finance/Bots/invoice-automation",
+      "fileType": "BOT"
+    }
+  ],
+  "total": 1
+}
+```
+
+---
+
+### 📌 Usage
+
+* The `id` field is your **Master File ID**, required in the **Schedule Creation API**.
+
+---
+
+### 🔍 Notes
+
+* `operation: "EQ"` ensures an **exact name match**.
+* Bot name match is **case-sensitive**.
+* You can use additional filters (like `fileType`) if needed.
+
