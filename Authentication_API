@@ -1,0 +1,57 @@
+API 1 :
+
+---
+
+### ✅ API 1: Authentication – Generate Bearer Token
+
+| **Purpose**  | Authenticates with Automation Anywhere A360 and returns a bearer token for subsequent API usage |
+| ------------ | ----------------------------------------------------------------------------------------------- |
+| **Method**   | `POST`                                                                                          |
+| **Endpoint** | `<HOST>/v2/authentication`                                                                      |
+| **Headers**  | `Content-Type: application/json`                                                                |
+
+---
+
+### 🔐 **Sample Request Body**
+
+```json
+{
+  "username": "your_username",
+  "password": "your_password",
+  "multipleLogin": true
+}
+```
+
+> 🔐 Set `multipleLogin: true` if you want the same user to generate multiple tokens without logging out existing sessions.
+
+---
+
+### ✅ Sample Response
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "tokenType": "Bearer",
+  "expiresIn": 3600
+}
+```
+
+---
+
+### 📌 Usage
+
+Use the `token` in the header for all further API calls:
+
+```
+Authorization: Bearer <your_token>
+```
+
+---
+
+### 💡 Notes
+
+* Ensure the user has the required API permissions in **Control Room > Admin > Users > Roles**.
+* If you omit `multipleLogin`, the default behavior will **invalidate prior sessions** for the same user.
+
+---
+
