@@ -1,1 +1,119 @@
+Here’s a well-structured GitHub-friendly documentation section including **Sample**, **Structure**, and **Usage** for the `Run Once Schedule` API call in Automation Anywhere:
+
+---
+
+# 🧾 Automation Anywhere - One-Time Bot Schedule via API
+
+Automate your bot execution with a **one-time schedule** using Control Room's API.
+
+---
+
+## 📌 API Endpoint
+
+```
+POST <host>/v2/schedule/automations
+```
+
+---
+
+## 🧱 JSON Structure
+
+```json
+{
+  "schedule": {
+    "status": "ACTIVE",
+    "scheduleType": "NONE",
+    "timeZone": "{{TimeZone}}",
+    "startDate": "{{StartDate}}",
+    "startTime": "{{StartTime}}",
+    "repeatEnabled": false,
+    "misfireScheduleConfig": false,
+    "scheduleResiliency": {
+      "common": {
+        "detectAndNotify": {
+          "enabled": false
+        },
+        "recording": {
+          "enabled": false,
+          "botStatus": "FAILED"
+        },
+        "handleUnexpectedPopups": true
+      }
+    }
+  },
+  "deployment": {
+    "botId": "{{MasterID}}",
+    "automationName": "Testing Bot",
+    "description": "Bot Created schedule for Testing bot",
+    "botLabel": null,
+    "automationPriority": "PRIORITY_MEDIUM",
+    "inputs": {},
+    "runElevated": false,
+    "hideBotAgentUi": false,
+    "unattendedRequest": {
+      "runAsUserIds": ["{{Run_As_ID}}"],
+      "poolIds": [],
+      "numOfRunAsUsersToUse": "1",
+      "deviceUsageType": "RUN_ONLY_ON_DEFAULT_DEVICE"
+    }
+  }
+}
+```
+
+---
+
+## 🔍 Sample Request (Filled)
+
+```json
+{
+  "schedule": {
+    "status": "ACTIVE",
+    "scheduleType": "NONE",
+    "timeZone": "Asia/Kolkata",
+    "startDate": "2025-07-25",
+    "startTime": "14:00:00",
+    "repeatEnabled": false,
+    "misfireScheduleConfig": false,
+    "scheduleResiliency": {
+      "common": {
+        "detectAndNotify": {
+          "enabled": false
+        },
+        "recording": {
+          "enabled": false,
+          "botStatus": "FAILED"
+        },
+        "handleUnexpectedPopups": true
+      }
+    }
+  },
+  "deployment": {
+    "botId": "abc123-bot-master-id",
+    "automationName": "Bot_InvoiceGenerator",
+    "description": "Bot Created schedule for Bot_InvoiceGenerator",
+    "botLabel": null,
+    "automationPriority": "PRIORITY_MEDIUM",
+    "inputs": {
+      "customerName": "Tata Steel",
+      "region": "South"
+    },
+    "runElevated": false,
+    "hideBotAgentUi": false,
+    "unattendedRequest": {
+      "runAsUserIds": ["def456-runner-id"],
+      "poolIds": [],
+      "numOfRunAsUsersToUse": "1",
+      "deviceUsageType": "RUN_ONLY_ON_DEFAULT_DEVICE"
+    }
+  }
+}
+```
+
+
+## ✅ Tips
+
+* `scheduleType: NONE` = One-time schedule.
+* `repeatEnabled: false` disables recurrence.
+* Use `Asia/Kolkata` or your desired IANA-compliant time zone.
+* Use `inputs` to send dynamic parameters if your bot uses variables.
 
