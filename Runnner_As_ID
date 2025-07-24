@@ -1,0 +1,69 @@
+---
+
+### ✅ API 2: Get Runner ID – List Devices
+
+| **Purpose**  | Retrieves available Bot Runners (devices) with their unique IDs. |
+| ------------ | ---------------------------------------------------------------- |
+| **Method**   | `POST`                                                           |
+| **Endpoint** | `<HOST>/v2/devices/list`                                         |
+| **Headers**  |                                                                  |
+
+* `Content-Type: application/json`
+* `X-Authorization: <your_token>`
+
+---
+
+### 📥 Sample Request Body
+
+Use this to fetch all devices (optionally filter by status or name):
+
+```json
+{}
+```
+
+Or filter by status:
+
+```json
+{
+  "filter": {
+    "statusList": ["Connected"]
+  }
+}
+```
+
+---
+
+### ✅ Sample Response (Simplified)
+
+```json
+{
+  "list": [
+    {
+      "id": "9f7a9c4e-xxxx-xxxx-xxxx-fb6b729a7ccc",
+      "deviceName": "BotRunner-1",
+      "status": "Connected"
+    },
+    {
+      "id": "1a2b3c4d-xxxx-xxxx-xxxx-a1b2c3d4e5f6",
+      "deviceName": "BotRunner-2",
+      "status": "Disconnected"
+    }
+  ],
+  "total": 2
+}
+```
+
+---
+
+### 📌 Usage
+
+* Extract the `id` of the connected runner you want to assign a bot to.
+* You’ll use this ID in the **Schedule Creation** API.
+
+---
+
+### 🔍 Notes
+
+* Use `X-Authorization` header instead of `Authorization: Bearer`.
+* You must have at least one registered device in the Control Room.
+
