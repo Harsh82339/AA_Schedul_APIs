@@ -1,0 +1,111 @@
+### 1. **Project Title**
+
+```
+# Dynamic Bot Scheduling in Automation Anywhere A360 using APIs
+```
+
+---
+
+### 2. **Description**
+
+```
+This project demonstrates how to dynamically schedule bots in Automation Anywhere A360 based on business calendar rules using APIs. The bot skips holidays and ensures that tasks are only scheduled on valid working days.
+```
+
+---
+
+### 3. **Tech Stack**
+
+```
+## 💻 Tech Stack
+- Automation Anywhere A360
+- REST APIs
+```
+
+---
+
+### 4. **Use Case / Problem Statement**
+```
+The goal is to create a bot schedule that runs only on working days. This avoids unnecessary bot runs on holidays or weekends, which can lead to failures or redundant actions.
+```
+
+---
+
+### 5. **Solution Overview**
+
+```
+1. Check if the current date is a valid working day.
+2. If it is a holiday, move to the next valid date.
+3. Use Automation Anywhere APIs to:
+   - Authenticate and generate a token
+   - Get runner ID
+   - Get master file ID of the bot
+   - Create a bot schedule dynamically
+```
+
+---
+
+### 6. **APIs Used**
+
+List and explain each API with purpose.
+
+```
+## 🔗 APIs Used
+
+| API Purpose          | Endpoint                             | Description                              |
+|----------------------|--------------------------------------|------------------------------------------|
+| 1. Token Generation  | `/v3/authentication`                 | Generates bearer token                    |
+| 2. Runner ID         | `/v2/runners`                        | Retrieves available bot runner ID        |
+| 3. Master File ID    | `/v2/repository/files`               | Gets bot’s master file ID from Control Room |
+| 4. Create Schedule   | `/v2/scheduler/schedules`            | Creates bot schedule for given date       |
+```
+
+---
+
+### 7. **Pre-Requisites**
+
+List any setup required.
+
+```
+- Automation Anywhere A360 Control Room access
+- Bot deployed and published
+- API credentials (username/password or OAuth)
+- Holiday/business day list (static or API-driven)
+```
+
+---
+
+### 8. **Implementation Steps**
+
+Detail your logic or  flow.
+
+```
+# Pseudocode or explanation
+1. Call auth API → Get token
+2. Check date → Is it a business day?
+   - Yes → Proceed
+   - No → Increment date until valid
+3. Get runner ID
+4. Get master file ID
+5. Call schedule API with required payload
+```
+
+
+### 10. **Future Enhancements**
+
+Optional ideas for improvement.
+
+```
+- Integrate with Outlook/Google Calendar API to fetch holidays dynamically
+- Add retry/failure handling and logging
+- Use a reusable utility bot package for scheduling
+```
+
+---
+
+### 11. **Author**
+
+```
+## 👤 Author
+[Harsh Goyal](https://www.linkedin.com/in/your-profile)
+```
